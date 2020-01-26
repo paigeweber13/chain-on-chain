@@ -16,17 +16,22 @@
 
 \begin{slide} % PROBLEM STATEMENT
 	\begin{itemize}
-    \item Input: chain of $n$ tasks $P = p_1, p_2, ..., p_n$
-    \item Output: $m$ disjoint intervals  $S = I_1, I_2, ..., I_m$ which
-    			partitions $[[1..m]]$
-    \item Metric: minimize the cost of the longest interval:
-    			$\min(\max_{i\in\{1..m\}}(\sum_{j \in{I_i}}^m p_j))$
+    \item Input: chain of $n$ tasks $P = [p_1, p_2, ..., p_n]$
+    \item Output: $m$ disjoint intervals  $S = [I_1, I_2, ..., I_m]$ which
+    			partitions $[[1..n]]$
+    \item Metric: minimize the cost of the longest interval, e.g.
+					$\min(\max_{i\in\{1..m\}}(\sum_{j \in{I_i}} p_j))$
+					\\note: we define the function $value (S)$ to denote the value of 
+					the metric for $S$
 	\end{itemize}
 \end{slide}
 
 \begin{slide} % PROPERTY
 	\begin{itemize}
-	\item if $S = [I_1, I_2, ... I_m]$ is an 
+	\item If $S = [I_1, I_2, ... I_m]$ is an optimal solution for problem 
+	$P = [p_1, p_2, ..., p_n]$, then $S' = [I_1, I_2, ... I_{m-1}]$ is an optimal
+	solution for $P' = [[p_1, p_2, ..., p_n] \setminus I_m]$
+	\item Note: $P'$ is $P$ with everything associated with $I_m$ removed
 	\end{itemize}
 \end{slide}
 
@@ -34,24 +39,50 @@
 	\begin{itemize}
 		\item Suppose there exists a solution 
 		$S = [I_1, I_2, ..., I_m]$ that is optimal for problem 
-		$P = [p_1, p_2, ..., p_n]$, and the value of $S$ is denoted $V$
+		$P = [p_1, p_2, ..., p_n]$, and that $value(S)$ is denoted $V$
 		\item Suppose there exists a solution $S' = [I_1, I_2, ..., I_{m-1}]$
-		for problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$ (the same problem,
-		with every process associated with $I_m$ removed)
+		for problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$, but that this
+		solution is not optimal.
 		\item The value of $P'$ is designated $V'$. Therefore, 
 		\\$V' = V - value(I_m)$
+		\item Because $S'$ is not optimal for $P'$, there exists a solution $S^*$
+		for problem $P'$ with value $V^*$, and $V^* < V'$ \\(remember, the goal is
+		to minimize our metric) 
 	\end{itemize}
 \end{slide}
 
 \begin{slide} % PROOF 2
 	\begin{itemize}
-		\item Suppose that $S'$ is not optimal for $P'$. Therefore, there exists a
-		solution $S^*$ for problem $P'$ with value $V^*$, and $V^* < V'$ (remember,
-		the goal is to minimize our metric) 
-		\item By adding $I_m$ to solution $S^*$, we obstain solution $S^{**}$, with
-		value $V^{**}$, and $V^{**} = value(S^*)
-		\item Because $V^* < V'$
-		\item Therefore, $V^{**} < V$
+		\item By adding $I_m$ to solution $S^*$, we obtain a solution to our
+		original problem $P$. Let us call this solution $S^{**}$, and its value
+		$V^{**}$
+		\item Therefore, the value of $V^{**}$ is as follows: 
+		\\$V^{**} = V^* + value(I_m)$
+		\item this may be rewritten as $V^* = V^{**} - value(I_m)$
+	\end{itemize}
+\end{slide}
+
+\begin{slide} % PROOF 2
+	\begin{itemize}
+		\item recall $V^* = V^{**} - value(I_m)$
+		\item recall $V' = V - value(I_m)$ 
+		\item recall $V^* < V'$
+		\item by substitution: $V^{**} - value(I_m) < V - value(I_m)$
+		\item and elimination: $V^{**} < V$
+		\item this is impossible, because $S$ is optimal. 
+		\item therefore, $S'$ must also be optimal and our property is valid
+	\end{itemize}
+\end{slide}
+
+\begin{slide} % PROOF 2
+	\begin{itemize}
+		\item in other words, because $V^*$ is less than $V'$, then $V^{**}$ must
+		be less than $V$
+		\item However, this is impossible, because we began the proof by declaring
+		$S$ to be optimal. This implies that $V$ is the lowest possible value for
+		any solution to $P$
+		\item Therefore, if $S$ is optimal, then $S'$ must also be optimal and our
+		property is true.
 	\end{itemize}
 \end{slide}
 
