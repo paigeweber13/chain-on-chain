@@ -1,21 +1,34 @@
-\documentclass{slides}
+\documentclass[landscape]{slides}
+\usepackage[landscape]{geometry}
 
 \usepackage{xcolor}
 \usepackage{pagecolor}
 \usepackage{lipsum}  
+\usepackage{enumitem} % to remove separation between list items
+% \usepackage{setspace} % finer control over line spacing
 
 \pagecolor{black}
 \color{lightgray}
-% \color{white}
+\setlist[itemize]{noitemsep}
 
 \begin{document}
+% \setstretch{1.1}
+\begin{slide}
+	\Large{Problem}
 	\begin{itemize}
-		\item Input chain of 
     \item Input: chain of $n$ tasks $P = p_1, p_2, ..., p_n$
-    \item Output: $m$ disjoint intervals $S = I_1, I_2, ..., I_m$ which
+    \item Output: $m$ disjoint intervals  $S = I_1, I_2, ..., I_m$ which
     			partitions $[[1..m]]$
     \item Metric: minimize the cost of the longest interval:
-    			$\min(\max(\sum_{j=1}^m$
+    			$\min(\max_{i\in\{1..m\}}(\sum_{j \in{I_i}}^m p_j))$
 	\end{itemize}
+\end{slide}
+
+\begin{slide}
+	\Large{Property}
+	\paragraph{Property}
+	if $S = [I_1, I_2, ... I_m]$
+\end{slide}
+
 \end{document}
      
