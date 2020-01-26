@@ -13,8 +13,8 @@
 
 \begin{document}
 % \setstretch{1.1}
-\begin{slide}
-	\Large{Problem}
+
+\begin{slide} % PROBLEM STATEMENT
 	\begin{itemize}
     \item Input: chain of $n$ tasks $P = p_1, p_2, ..., p_n$
     \item Output: $m$ disjoint intervals  $S = I_1, I_2, ..., I_m$ which
@@ -24,10 +24,35 @@
 	\end{itemize}
 \end{slide}
 
-\begin{slide}
-	\Large{Property}
-	\paragraph{Property}
-	if $S = [I_1, I_2, ... I_m]$
+\begin{slide} % PROPERTY
+	\begin{itemize}
+	\item if $S = [I_1, I_2, ... I_m]$ is an 
+	\end{itemize}
+\end{slide}
+
+\begin{slide} % PROOF 1
+	\begin{itemize}
+		\item Suppose there exists a solution 
+		$S = [I_1, I_2, ..., I_m]$ that is optimal for problem 
+		$P = [p_1, p_2, ..., p_n]$, and the value of $S$ is denoted $V$
+		\item Suppose there exists a solution $S' = [I_1, I_2, ..., I_{m-1}]$
+		for problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$ (the same problem,
+		with every process associated with $I_m$ removed)
+		\item The value of $P'$ is designated $V'$. Therefore, 
+		\\$V' = V - value(I_m)$
+	\end{itemize}
+\end{slide}
+
+\begin{slide} % PROOF 2
+	\begin{itemize}
+		\item Suppose that $S'$ is not optimal for $P'$. Therefore, there exists a
+		solution $S^*$ for problem $P'$ with value $V^*$, and $V^* < V'$ (remember,
+		the goal is to minimize our metric) 
+		\item By adding $I_m$ to solution $S^*$, we obstain solution $S^{**}$, with
+		value $V^{**}$, and $V^{**} = value(S^*)
+		\item Because $V^* < V'$
+		\item Therefore, $V^{**} < V$
+	\end{itemize}
 \end{slide}
 
 \end{document}
