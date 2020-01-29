@@ -41,11 +41,9 @@
 		\item Suppose there exists a solution 
 		$S = [I_1, I_2, ..., I_m]$ that is optimal for problem 
 		$P = [p_1, p_2, ..., p_n]$, and that $value(S)$ is denoted $V$
-		\item Suppose there exists a solution $S' = [I_1, I_2, ..., I_{m-1}]$
-		for problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$, but that this
-		solution is not optimal.
-		\item The value of $P'$ is designated $V'$. Therefore, 
-		\\$V' = V - value(I_m)$
+		\item Suppose there exists a solution $S' = [I_1, I_2, ..., I_{m-1}]$ for
+		problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$ with valule $V'$, but
+		that this solution is not optimal.
 		\item Because $S'$ is not optimal for $P'$, there exists a solution $S^*$
 		for problem $P'$ with value $V^*$, and $V^* < V'$ \\(remember, the goal is
 		to minimize our metric) 
@@ -54,22 +52,14 @@
 
 \begin{slide} % PROOF 2
 	\begin{itemize}
+		% prove that this new solution is valid
 		\item By adding $I_m$ to solution $S^*$, we obtain a solution to our
 		original problem $P$. Let us call this solution $S^{**}$, and its value
 		$V^{**}$
-		\item Therefore, the value of $V^{**}$ is as follows: 
-		\\$V^{**} = V^* + value(I_m)$
-		\item this may be rewritten as $V^* = V^{**} - value(I_m)$
-	\end{itemize}
-\end{slide}
 
-\begin{slide} % PROOF 2
-	\begin{itemize}
-		\item recall $V^* = V^{**} - value(I_m)$
-		\item recall $V' = V - value(I_m)$ 
-		\item recall $V^* < V'$
-		\item by substitution: $V^{**} - value(I_m) < V - value(I_m)$
-		\item and elimination: $V^{**} < V$
+		% are you sure???
+		\item Because $V^{*} < V'$, it must also be true that $V^{**} < V$
+
 		\item this is impossible, because $S$ is optimal. 
 		\item therefore, $S'$ must also be optimal and our property is valid
 	\end{itemize}
