@@ -29,6 +29,7 @@
 
 \begin{slide} % PROPERTY
 	\begin{itemize}
+		% this property is incorrect! See comment starting line 69
 	\item If $S = [I_1, I_2, ... I_m]$ is an optimal solution for problem 
 	$P = [p_1, p_2, ..., p_n]$, then $S' = [I_1, I_2, ... I_{m-1}]$ is an optimal
 	solution for $P' = [[p_1, p_2, ..., p_n] \setminus I_m]$
@@ -36,45 +37,45 @@
 	\end{itemize}
 \end{slide}
 
-\begin{slide} % PROOF 1
+\begin{slide} % PROPERTY
 	\begin{itemize}
+		% PROBABLY WRONG
+		\item We define "optimal" to mean having the lowest possible value. Because
+		our metric uses the $max$ operation, there is more than one solution that
+		is considered "optimal" under this definition.
+	\end{itemize}
+\end{slide}
+
+\begin{slide} % PROOF 1
+	\begin{enumerate}
 		\item Suppose there exists a solution 
 		$S = [I_1, I_2, ..., I_m]$ that is optimal for problem 
 		$P = [p_1, p_2, ..., p_n]$, and that $value(S)$ is denoted $V$
 		\item Suppose there exists a solution $S' = [I_1, I_2, ..., I_{m-1}]$ for
-		problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$ with valule $V'$, but
-		that this solution is not optimal.
-		\item Because $S'$ is not optimal for $P'$, there exists a solution $S^*$
-		for problem $P'$ with value $V^*$, and $V^* < V'$ \\(remember, the goal is
-		to minimize our metric) 
-	\end{itemize}
-\end{slide}
+		problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$, where $I_m$ is an
+		interval at the beginning or end of the chain. The valule of $S'$ is
+		$V' = \max_{i\in\{1..m-1\}}(\sum_{j \in{I_i}} p_j))$ 
+		Suppose that this solution is not optimal.
+		\item Because $S'$ is not optimal for $P'$, there exists a solution $S^* =
+		[I_1*, I_2*, ..., I_{m-1}*]$ for problem $P'$ with value $V^*$, and $V^* <
+		V'$ \\(remember, the goal is to minimize our metric) 
 
-\begin{slide} % PROOF 2
-	\begin{itemize}
 		% prove that this new solution is valid
-		\item By adding $I_m$ to solution $S^*$, we obtain a solution to our
-		original problem $P$. Let us call this solution $S^{**}$, and its value
-		$V^{**}$
+		\item By adding $I_m$ to solution $S^*$, we can build a solution to our
+		original problem $P$. Let us call this solution $S^{**} = [I_1*, I_2*, ...,
+		I_{m-1}*, I_m]$, and its value $V^{**} = \max_{i\in\{1..m\}}(\sum_{j
+		\in{I_i}} p_j))$.
 
-		% are you sure???
+		% are you sure??? This is not necessarily true what if there are 4
+		% processors, 3 tasks of size 1, and one task of size 10? Each interval
+		% just contains one task, and I_m contnains the final task of size 10? Once
+		% I_m is removed, even if you put all 3 tasks on one processor (a
+		% sub-optimal solution), the final solution will still be optimal. 
 		\item Because $V^{*} < V'$, it must also be true that $V^{**} < V$
 
-		\item this is impossible, because $S$ is optimal. 
-		\item therefore, $S'$ must also be optimal and our property is valid
-	\end{itemize}
-\end{slide}
-
-\begin{slide} % PROOF 2
-	\begin{itemize}
-		\item in other words, because $V^*$ is less than $V'$, then $V^{**}$ must
-		be less than $V$
-		\item However, this is impossible, because we began the proof by declaring
-		$S$ to be optimal. This implies that $V$ is the lowest possible value for
-		any solution to $P$
-		\item Therefore, if $S$ is optimal, then $S'$ must also be optimal and our
-		property is true.
-	\end{itemize}
+		\item However, this is impossible, because $S$ is optimal. 
+		\item Therefore, $S'$ must also be optimal and our property is valid
+	\end{enumerate}
 \end{slide}
 
 \end{document}
