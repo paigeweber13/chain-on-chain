@@ -1,19 +1,25 @@
 \documentclass{article}
+\author{Riley Weber}
 \title{Chain on Chain}
 
 \begin{document}
 \maketitle
 
-\begin{itemize}
-   \item Input: chain of $n$ tasks $P = [p_1, p_2, ..., p_n]$
-   \item Output: $m$ disjoint intervals  $S = [I_1, I_2, ..., I_m]$ which
-   			partitions $[[1..n]]$
-   \item Metric: minimize the cost of the longest interval, e.g.
-				$\min(\max_{i\in\{1..m\}}(\sum_{j \in{I_i}} p_j))$
-				\\note: we define the function $value (S)$ to denote the value of 
-				the metric for $S$
-\end{itemize}
+\section{Problem Description}
 
+\textbf{Input:} chain of $n$ tasks $P = [p_1, p_2, ..., p_n]$
+\\\textbf{Output:} $m$ disjoint intervals  $S = [I_1, I_2, ..., I_m]$ which
+partitions $[[1..n]]$
+\\\textbf{Metric:} minimize the cost of the longest interval
+\\e.g. $\min(\max_{i\in\{1..m\}}(\sum_{j \in{I_i}} p_j))$ 
+% \\note: we define the function $value (S)$ to denote the value of the metric for $S$
+
+\section{Definitions}
+\textbf{Optimal:} having the lowest possible value. Because our metric uses the
+$max$ operation, there is more than one solution that is considered "optimal"
+under this definition.
+
+\section{Property}
 \begin{itemize}
 	% this property is incorrect! See comment starting line 69
 \item Suppose there is a problem $P = [p_1, p_2, ..., p_n]$. There exists an
@@ -27,13 +33,7 @@ property.
 smaller in value
 \end{itemize}
 
-\begin{itemize}
-	% PROBABLY WRONG
-	\item We define "optimal" to mean having the lowest possible value. Because
-	our metric uses the $max$ operation, there is more than one solution that
-	is considered "optimal" under this definition.
-\end{itemize}
-
+\section{Proof}
 \begin{enumerate}
 	\item Suppose there exists a solution 
 	$S = [I_1, I_2, ..., I_m]$ that is optimal for problem 
