@@ -7,12 +7,18 @@
 
 \section{Problem Description}
 
-\textbf{Input:} chain of $n$ tasks $P = [p_1, p_2, ..., p_n]$
-\\\textbf{Output:} $m$ disjoint intervals  $S = [I_1, I_2, ..., I_m]$ which
-partitions $[[1..n]]$
-\\\textbf{Metric:} minimize the cost of the longest interval
-\\e.g. $\min(\max_{i\in\{1..m\}}(\sum_{j \in{I_i}} p_j))$ 
-% \\note: we define the function $value (S)$ to denote the value of the metric for $S$
+\begin{tabbing}
+	\bfseries left \quad \quad \quad \=\bfseries paragraph \kill
+	\textbf{Input:}  \> chain of $n$ tasks $P = [p_1, p_2, ..., p_n]$
+	\\
+	\textbf{Output:} \> $m$ disjoint intervals  $S = [I_1, I_2, ..., I_m]$ which
+	partitions $[[1..n]]$ 
+	\\
+	\textbf{Metric:} \> minimize the cost of the longest interval e.g. 
+	\\
+	\>$\min(\max_{i\in\{1..m\}}(\sum_{j \in{I_i}} p_j))$ 
+	% \\note: we define the function $value (S)$ to denote the value of the metric for $S$
+\end{tabbing}
 
 \section{Definitions}
 \textbf{Optimal:} having the lowest possible value. Because our metric uses the
