@@ -1,87 +1,68 @@
-\documentclass[landscape]{slides}
-\usepackage[landscape]{geometry}
-
-\usepackage{xcolor}
-\usepackage{pagecolor}
-\usepackage{lipsum}  
-\usepackage{enumitem} % to remove separation between list items
-% \usepackage{setspace} % finer control over line spacing
-
-\definecolor{darkgray}{HTML}{212121}
-\pagecolor{darkgray}
-\color{lightgray}
-\setlist[itemize]{noitemsep}
+\documentclass{article}
+\title{Chain on Chain}
 
 \begin{document}
-% \setstretch{1.1}
+\maketitle
 
-\begin{slide} % PROBLEM STATEMENT
-	\begin{itemize}
-    \item Input: chain of $n$ tasks $P = [p_1, p_2, ..., p_n]$
-    \item Output: $m$ disjoint intervals  $S = [I_1, I_2, ..., I_m]$ which
-    			partitions $[[1..n]]$
-    \item Metric: minimize the cost of the longest interval, e.g.
-					$\min(\max_{i\in\{1..m\}}(\sum_{j \in{I_i}} p_j))$
-					\\note: we define the function $value (S)$ to denote the value of 
-					the metric for $S$
-	\end{itemize}
-\end{slide}
+\begin{itemize}
+   \item Input: chain of $n$ tasks $P = [p_1, p_2, ..., p_n]$
+   \item Output: $m$ disjoint intervals  $S = [I_1, I_2, ..., I_m]$ which
+   			partitions $[[1..n]]$
+   \item Metric: minimize the cost of the longest interval, e.g.
+				$\min(\max_{i\in\{1..m\}}(\sum_{j \in{I_i}} p_j))$
+				\\note: we define the function $value (S)$ to denote the value of 
+				the metric for $S$
+\end{itemize}
 
-\begin{slide} % PROPERTY
-	\begin{itemize}
-		% this property is incorrect! See comment starting line 69
-	\item Suppose there is a problem $P = [p_1, p_2, ..., p_n]$. There exists an
-	optimal solution $S = [I_1, I_2, ... I_m]$ for problem $P$ 
-	where $S' = [I_1, I_2, ... I_{m-1}]$ is an optimal solution for 
-	$P' = [[p_1, p_2, ..., p_n] \setminus I_m]$
-	\item THERE IS AN optimal. It is not necessary that an optimal solution have
-	this property, but there exists an optimal solution that does have this
-	property.
-	\item prove the built solution won't be bigger. It will be equal to or
-	smaller in value
-	\end{itemize}
-\end{slide}
+\begin{itemize}
+	% this property is incorrect! See comment starting line 69
+\item Suppose there is a problem $P = [p_1, p_2, ..., p_n]$. There exists an
+optimal solution $S = [I_1, I_2, ... I_m]$ for problem $P$ 
+where $S' = [I_1, I_2, ... I_{m-1}]$ is an optimal solution for 
+$P' = [[p_1, p_2, ..., p_n] \setminus I_m]$
+\item THERE IS AN optimal. It is not necessary that an optimal solution have
+this property, but there exists an optimal solution that does have this
+property.
+\item prove the built solution won't be bigger. It will be equal to or
+smaller in value
+\end{itemize}
 
-\begin{slide} % PROPERTY
-	\begin{itemize}
-		% PROBABLY WRONG
-		\item We define "optimal" to mean having the lowest possible value. Because
-		our metric uses the $max$ operation, there is more than one solution that
-		is considered "optimal" under this definition.
-	\end{itemize}
-\end{slide}
+\begin{itemize}
+	% PROBABLY WRONG
+	\item We define "optimal" to mean having the lowest possible value. Because
+	our metric uses the $max$ operation, there is more than one solution that
+	is considered "optimal" under this definition.
+\end{itemize}
 
-\begin{slide} % PROOF 1
-	\begin{enumerate}
-		\item Suppose there exists a solution 
-		$S = [I_1, I_2, ..., I_m]$ that is optimal for problem 
-		$P = [p_1, p_2, ..., p_n]$, and that $value(S)$ is denoted $V$
-		\item Suppose there exists a solution $S' = [I_1, I_2, ..., I_{m-1}]$ for
-		problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$, where $I_m$ is an
-		interval at the beginning or end of the chain. The valule of $S'$ is
-		$V' = \max_{i\in\{1..m-1\}}(\sum_{j \in{I_i}} p_j))$ 
-		Suppose that this solution is not optimal.
-		\item Because $S'$ is not optimal for $P'$, there exists a solution $S^* =
-		[I_1*, I_2*, ..., I_{m-1}*]$ for problem $P'$ with value $V^*$, and $V^* <
-		V'$ \\(remember, the goal is to minimize our metric) 
+\begin{enumerate}
+	\item Suppose there exists a solution 
+	$S = [I_1, I_2, ..., I_m]$ that is optimal for problem 
+	$P = [p_1, p_2, ..., p_n]$, and that $value(S)$ is denoted $V$
+	\item Suppose there exists a solution $S' = [I_1, I_2, ..., I_{m-1}]$ for
+	problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$, where $I_m$ is an
+	interval at the beginning or end of the chain. The valule of $S'$ is
+	$V' = \max_{i\in\{1..m-1\}}(\sum_{j \in{I_i}} p_j))$ 
+	Suppose that this solution is not optimal.
+	\item Because $S'$ is not optimal for $P'$, there exists a solution $S^* =
+	[I_1*, I_2*, ..., I_{m-1}*]$ for problem $P'$ with value $V^*$, and $V^* <
+	V'$ \\(remember, the goal is to minimize our metric) 
 
-		% prove that this new solution is valid
-		\item By adding $I_m$ to solution $S^*$, we can build a solution to our
-		original problem $P$. Let us call this solution $S^{**} = [I_1*, I_2*, ...,
-		I_{m-1}*, I_m]$, and its value $V^{**} = \max_{i\in\{1..m\}}(\sum_{j
-		\in{I_i}} p_j))$.
+	% prove that this new solution is valid
+	\item By adding $I_m$ to solution $S^*$, we can build a solution to our
+	original problem $P$. Let us call this solution $S^{**} = [I_1*, I_2*, ...,
+	I_{m-1}*, I_m]$, and its value $V^{**} = \max_{i\in\{1..m\}}(\sum_{j
+	\in{I_i}} p_j))$.
 
-		% are you sure??? This is not necessarily true what if there are 4
-		% processors, 3 tasks of size 1, and one task of size 10? Each interval
-		% just contains one task, and I_m contnains the final task of size 10? Once
-		% I_m is removed, even if you put all 3 tasks on one processor (a
-		% sub-optimal solution), the final solution will still be optimal. 
-		\item Because $V^{*} < V'$, it must also be true that $V^{**} < V$
+	% are you sure??? This is not necessarily true what if there are 4
+	% processors, 3 tasks of size 1, and one task of size 10? Each interval
+	% just contains one task, and I_m contnains the final task of size 10? Once
+	% I_m is removed, even if you put all 3 tasks on one processor (a
+	% sub-optimal solution), the final solution will still be optimal. 
+	\item Because $V^{*} < V'$, it must also be true that $V^{**} < V$
 
-		\item However, this is impossible, because $S$ is optimal. 
-		\item Therefore, $S'$ must also be optimal and our property is valid
-	\end{enumerate}
-\end{slide}
+	\item However, this is impossible, because $S$ is optimal. 
+	\item Therefore, $S'$ must also be optimal and our property is valid
+\end{enumerate}
 
 \end{document}
      
