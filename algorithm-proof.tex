@@ -30,10 +30,15 @@
 \begin{slide} % PROPERTY
 	\begin{itemize}
 		% this property is incorrect! See comment starting line 69
-	\item If $S = [I_1, I_2, ... I_m]$ is an optimal solution for problem 
-	$P = [p_1, p_2, ..., p_n]$, then $S' = [I_1, I_2, ... I_{m-1}]$ is an optimal
-	solution for $P' = [[p_1, p_2, ..., p_n] \setminus I_m]$
-	\item Note: $P'$ is $P$ with everything associated with $I_m$ removed
+	\item Suppose there is a problem $P = [p_1, p_2, ..., p_n]$. There exists an
+	optimal solution $S = [I_1, I_2, ... I_m]$ for problem $P$ 
+	where $S' = [I_1, I_2, ... I_{m-1}]$ is an optimal solution for 
+	$P' = [[p_1, p_2, ..., p_n] \setminus I_m]$
+	\item THERE IS AN optimal. It is not necessary that an optimal solution have
+	this property, but there exists an optimal solution that does have this
+	property.
+	\item prove the built solution won't be bigger. It will be equal to or
+	smaller in value
 	\end{itemize}
 \end{slide}
 
