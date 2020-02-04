@@ -31,19 +31,18 @@ under this definition.
 \item Suppose there is a problem $P = [p_1, p_2, ..., p_n]$. There exists an
 optimal solution $S = [I_1, I_2, ... I_m]$ for problem $P$ 
 where $S' = [I_1, I_2, ... I_{m-1}]$ is an optimal solution for 
-$P' = [[p_1, p_2, ..., p_n] \setminus I_m]$
-\item THERE IS AN optimal. It is not necessary that an optimal solution have
-this property, but there exists an optimal solution that does have this
-property.
-\item prove the built solution won't be bigger. It will be equal to or
-smaller in value
+$P' = [[p_1, p_2, ..., p_n] \setminus I_m]$, given that $I_m$ is at the
+beginning or end 
+\item Note that not all solutions must have this property, but that some
+optimal solutions will. We restrict the solutions we are concerned with to the
+solutions with this property. 
 \end{itemize}
 
 \section{Proof}
 \begin{enumerate}
 	\item Suppose there exists a solution 
 	$S = [I_1, I_2, ..., I_m]$ that is optimal for problem 
-	$P = [p_1, p_2, ..., p_n]$, and that $value(S)$ is denoted $V$
+	$P = [p_1, p_2, ..., p_n]$ with value $V$
 	\item Suppose there exists a solution $S' = [I_1, I_2, ..., I_{m-1}]$ for
 	problem $P'= [[p_1, p_2, ..., p_n] \setminus I_m]$, where $I_m$ is an
 	interval at the beginning or end of the chain. The valule of $S'$ is
@@ -69,6 +68,17 @@ smaller in value
 	\item However, this is impossible, because $S$ is optimal. 
 	\item Therefore, $S'$ must also be optimal and our property is valid
 \end{enumerate}
+
+\section{Formula}
+\subsection{Properties}
+\subsubsection{Unitary Decision}
+$I_m$
+
+\subsubsection{Aggregation Function}
+$V* = \max(V, \sum_{j\in{I_m}}p_j)$
+
+\subsubsection{State Space}
+$p_j \in I_m$
 
 \end{document}
      
